@@ -11,11 +11,11 @@ const useForm = (initialValues) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("I was clicked...")
-        setShowSuccessMessage(true);
+        setShowSuccessMessage(!showSuccessMessage);
+        console.log(!showSuccessMessage);
     };
 
-    return [values, handleChanges, handleSubmit];
+    return [values, handleChanges, handleSubmit, showSuccessMessage];
 }
 
 export default useForm;
