@@ -11,11 +11,16 @@ const useForm = (initialValues) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        setShowSuccessMessage(!showSuccessMessage);
-        console.log(!showSuccessMessage);
+        setShowSuccessMessage(!showSuccessMessage)
+        
     };
 
-    return [values, handleChanges, handleSubmit, showSuccessMessage];
+    const reset = (e) => {
+        e.preventDefault();
+        setValues({ ...values, [e.target.name]: e.target.value });
+    }
+
+    return [values, handleChanges, handleSubmit, showSuccessMessage, reset];
 }
 
 export default useForm;
