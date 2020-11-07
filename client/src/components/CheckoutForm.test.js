@@ -22,7 +22,8 @@ test("form shows success message on submit with form details", async () => {
     const cityInput = screen.getByLabelText(/city/i);
     const stateInput = screen.getByLabelText(/state/i);
     const zipInput = screen.getByLabelText(/zip/i);
-    //const success = screen.getByTestId('successMessage');
+    const submit = screen.getByRole('button', { name: /checkout/i });
+    
 
     //act 
     fireEvent.change(firstNameInput, { target: 
@@ -66,5 +67,16 @@ test("form shows success message on submit with form details", async () => {
             value: "94500"
         }
     })
+
+    fireEvent.click(submit);
     //expect(success).toHaveContent(/woo-hoo/i);
+
+    const success = await screen.findByText(/woo-hoo/i);
+
+    expect(firstNameInput).toHaveValue();
+    expect(lastNameInput).toHaveValue();
+    expect(addressInput).toHaveValue();
+    expect(cityInput).toHaveValue();
+    expect(stateInput).toHaveValue();
+    expect(zipInput).toHaveValue();
 });
