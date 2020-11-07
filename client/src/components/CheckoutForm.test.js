@@ -69,7 +69,6 @@ test("form shows success message on submit with form details", async () => {
     })
 
     fireEvent.click(submit);
-    //expect(success).toHaveContent(/woo-hoo/i);
 
     const success = await screen.findByText(/woo-hoo/i);
 
